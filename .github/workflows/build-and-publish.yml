@@ -19,7 +19,7 @@ jobs:
         with:
           path: 'octave_pywinauto'
       # uncomment this on demand
-      - run: sudo chmod a+x octave_pywinauto/src/configure
+      # - run: sudo chmod a+x octave_pywinauto/src/configure
       # uncomment this on demand
       - run: sudo chmod -R a+x octave_pywinauto/inst
       - run: tar --warning=no-file-changed --exclude='octave_pywinauto/.git' --exclude='octave_pywinauto/.github' -czvf octave_pywinauto.tar.gz octave_pywinauto
