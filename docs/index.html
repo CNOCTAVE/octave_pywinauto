@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+  <meta name="theme-color" content="#00B4FF">
+  <title>octave_pywinauto文档</title>
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.0/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+  <link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="q-app">
+    <q-layout view="hHh LpR fFf">
+      <q-header elevated class="bg-primary text-white">
+        <q-toolbar class="bg-primary text-white q-ny-md shadow-2">
+          <q-btn stretch flat label="Octave中文网" @click="goTo('https://cnoctave.top')"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="octave_pywinauto文档" @click="scrollToTop()"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-space></q-space>
+          <q-separator dark vertical></q-separator>
+          <q-btn-dropdown stretch flat icon="translate" label="切换文档语言">
+            <q-list>
+              <q-item clickable v-close-popup @click="goTo('index.html')">
+                <q-item-section>
+                  <q-item-label>zh-CN 简体中文</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="中文版Octave文档" @click="goTo('https://docs.cnoctave.top')"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="学术交流论坛" @click="goTo('https://forum.cnoctave.top')"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="新闻" @click="goTo('https://octave.org/news.html')"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="使用方法" @click="goTo('https://wiki.octave.org/Using_Octave')"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="免费下载" @click="goTo('https://octave.org/download')"></q-btn>
+        </q-toolbar>
+      </q-header>
+      <q-drawer class="bg-primary" show-if-above v-model="leftDrawerOpen" side="left" bordered elevated>
+        <q-list class="title1 text-white bg-primary"><q-item clickable v-ripple
+            @click="goToID('#homepage')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>项目首页</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#repo_install')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>软件源安装</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#online_install')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>在线安装</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#source_code_install')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>源码安装</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#how_to_use')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>如何使用</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#dependencies')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>依赖库</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#function_usage')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>函数用法</q-item-section></q-item><q-item clickable v-ripple
+            @click="goToID('#gui_practice')"><q-item-section avatar><q-icon
+                name="touch_app" /></q-item-section><q-item-section>GUI 自动化操作实战</q-item-section></q-item><q-item
+            clickable v-ripple @click="goToID('#qrc_example')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>QRC 解密示例</q-item-section></q-item><q-item clickable
+            v-ripple @click="goToID('#code')"><q-item-section avatar><q-icon
+                name="help" /></q-item-section><q-item-section>示例代码</q-item-section></q-item></q-list>
+      </q-drawer>
+      <q-page-container>
+        <div style="position: relative;">
+          <q-img src="banner0.png" spinner-color="white" style="width: 100%; height: 300px;"></q-img>
+          <div class="q-mx-md rainbow-text"
+            style="line-height: 300px; font-size: 100px; position: absolute; left: 0%; top: 0%;">octave_pywinauto文档
+          </div>
+        </div>
+        <div class="container">
+          <div class="main">
+
+            <div id="homepage" class="text-h5 q-ma-md text-red-10">octave_pywinauto 是 Windows 专有的 Octave GUI 自动化包装库。由于
+              Octave Windows 版内置 Python 没有 pip 与 pywin32，本包把 pywinauto 的纯 Python 部分 vendor 为 .pyc 字节码，并附带 ctypes Win32
+              后端。</div>
+
+            <div id="repo_install" class="title1 q-ma-md text-primary">软件源安装</div>
+            <p class="q-ma-md">本包可通过 Octave 软件源安装：</p>
+            <p class="q-ma-md">&gt;&gt; pkg install -forge octave_pywinauto</p>
+            <div id="online_install" class="title1 q-ma-md text-primary">在线安装</div>
+            <p class="q-ma-md">&gt;&gt; pkg install
+              'https://github.com/CNOCTAVE/octave_pywinauto/releases/download/1.0.0/octave_pywinauto.tar.gz'</p>
+            <div id="source_code_install" class="title1 q-ma-md text-primary">源码安装</div>
+            <p class="q-ma-md">&gt;&gt; pkg install octave_pywinauto.tar.gz -local</p>
+            <div id="how_to_use" class="title1 q-ma-md text-primary">如何使用</div>
+            <p class="q-ma-md">&gt;&gt; pkg load octave_pywinauto</p>
+
+            <div id="dependencies" class="title1 q-ma-md text-primary">依赖库</div>
+            <p class="q-ma-md">仅支持 Windows。vendor 目录含 <code>py312/</code> 与 <code>py313/</code> 两套 pywinauto 0.6.9 /
+              comtypes 1.5.0 / six 1.17.0 的 sourceless .pyc。</p>
+            <p class="q-ma-md">自动探测顺序：PYWINAUTO_PYTHON → python3 → python → py -3 → $OCTAVE_HOME/usr/bin/python.exe。使用内置
+              Python 时切换到 ctypes 后端，普通 Python + pywin32 时使用真正的 pywinauto 后端。</p>
+            <div id="function_usage" class="title1 q-ma-md text-primary">函数用法</div>
+            <p class="q-ma-md">下列每个函数均按「调用方法 → 含义 → 示例」说明。使用前先执行 <code>pkg load octave_pywinauto</code>。带
+              <code>[ ]</code> 的参数可省略。</p>
+
+            <div class="text-h6 text-primary q-mt-lg">1. pywinauto_init ()</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>ctx = pywinauto_init ()</code></p>
+            <p class="q-ma-md"><b>含义</b>　探测一个能加载 vendor 字节码的 Windows Python，返回上下文结构体
+              <code>ctx</code>。字段：<code>python</code>（解释器命令）、<code>driver</code>（Python
+              驱动路径）、<code>backend</code>（<code>pywinauto</code> 或 <code>ctypes</code>）、<code>posix_paths</code>（路径是否需转
+              POSIX）。Octave 内置 CPython 3.12 走 ctypes Win32 后端，普通 Windows Python + pywin32 走真正的 pywinauto
+              后端。结果会缓存，重复调用几乎无开销。找不到可用解释器时报错。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; ctx = pywinauto_init()
+&gt;&gt; ctx.backend
+ans = pywinauto
+&gt;&gt; ctx.python
+ans = python3</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">2. pywinauto_version ()</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>pywinauto_version ()</code></p>
+            <p class="q-ma-md"><b>含义</b>　打印当前生效的后端名与 Python 版本，无返回值。用于确认初始化走了哪条路径。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pywinauto_version()
+pywinauto backend=pywinauto python=3.13.14</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">3. pywinauto_windows ()</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>w = pywinauto_windows ()</code></p>
+            <p class="q-ma-md"><b>含义</b>　返回描述所有可见顶层窗口的结构体数组 <code>w</code>。字段：<code>handle</code>（HWND
+              句柄）、<code>title</code>（标题）、<code>class</code>（窗口类）、<code>pid</code>（进程 ID）、<code>rect</code>（左上右下坐标，仅
+              ctypes 后端提供）。可据此选择后续操作目标。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; w = pywinauto_windows()
+&gt;&gt; numel(w)
+ans = 11
+&gt;&gt; {w(1:3).title}
+ans =
+  1×3 cell array
+    {'…'}    {'…'}    {'…'}</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">4. pywinauto_start (exe, args)</div>
+            <p class="q-ma-md">
+              <b>调用方法</b>　<code>pid = pywinauto_start (exe)</code>　或　<code>pid = pywinauto_start (exe, args)</code></p>
+            <p class="q-ma-md"><b>含义</b>　启动 <code>exe</code> 进程并返回其 PID。<code>args</code> 可省略，为 cell
+              数组或单个字符串，作为命令行参数传给程序。启动失败时报错。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pid = pywinauto_start('notepad.exe')
+pid = 4288
+&gt;&gt; pid = pywinauto_start('LyricTools.exe', {'test.qrc'});</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">5. pywinauto_connect (pid)</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>pid = pywinauto_connect (pid)</code></p>
+            <p class="q-ma-md"><b>含义</b>　连接到一个已运行的进程 ID，成功时返回该 PID。适用于窗口已经打开、只需后续操作的场景。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pid = pywinauto_connect(4288)
+pid = 4288</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">6. pywinauto_click (title, x, y)</div>
+            <p class="q-ma-md">
+              <b>调用方法</b>　<code>pywinauto_click (title, x, y)</code>　或　<code>pywinauto_click (handle)</code></p>
+            <p class="q-ma-md"><b>含义</b>　激活标题包含 <code>title</code> 的窗口，在窗口客户区坐标 <code>(x, y)</code> 处点击。若第一个参数是数值，则按
+              HWND 句柄定位窗口。<code>x</code>、<code>y</code> 同时省略时只激活窗口、不点击。无返回值。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pywinauto_click('记事本', 100, 200)
+&gt;&gt; pywinauto_click(w(1).handle)   % 按句柄激活</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">7. pywinauto_type_keys (text, title, set_text)</div>
+            <p class="q-ma-md">
+              <b>调用方法</b>　<code>pywinauto_type_keys (text)</code>　或　<code>pywinauto_type_keys (text, title, set_text)</code>
+            </p>
+            <p class="q-ma-md"><b>含义</b>　把 <code>text</code> 发送给活动窗口；给定 <code>title</code>（字符串或数值句柄）时先激活对应窗口再发送。第三个参数
+              <code>set_text</code> 为 <code>true</code> 时，ctypes 后端直接设置窗口文本而非模拟逐键输入——对中文、特殊字符更可靠。默认
+              <code>false</code>。无返回值。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pywinauto_type_keys('hello')
+&gt;&gt; pywinauto_type_keys('你好', '记事本', true)   % 直接设文本</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">8. pywinauto_close (title)</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>pywinauto_close (title)</code>　或　<code>pywinauto_close (handle)</code>
+            </p>
+            <p class="q-ma-md"><b>含义</b>　关闭标题包含 <code>title</code> 的窗口；传入数值时按 HWND 句柄关闭。无返回值。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pywinauto_close('记事本')
+&gt;&gt; pywinauto_close(w(1).handle)</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">9. pywinauto_example_qrc (exe, qrc)</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>info = pywinauto_example_qrc (exe, qrc)</code></p>
+            <p class="q-ma-md"><b>含义</b>　以 <code>qrc</code> 为参数启动 <code>exe</code>（LyricTools.exe），等待 2 秒后对比前后窗口，返回结构体
+              <code>info</code>。字段：<code>pid</code>、<code>exe</code>、<code>qrc</code>、<code>window_count</code>、<code>titles</code>。这是用
+              GUI 解出明文、与 3DES 结果交叉验证的整段流程。</p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; info = pywinauto_example_qrc('LyricTools.exe', 'test.qrc')
+&gt;&gt; info.pid
+ans = 4288
+&gt;&gt; info.window_count
+ans = 1</pre>
+
+            <div class="text-h6 text-primary q-mt-lg">10. pywinauto_selftest ()</div>
+            <p class="q-ma-md"><b>调用方法</b>　<code>pywinauto_selftest ()</code></p>
+            <p class="q-ma-md"><b>含义</b>　打印生效后端与 Python 版本，并枚举可见窗口（最多列出前 5 个标题）。不执行点击、输入、关闭等动作，可在任意 Windows 环境安全运行。无返回值。
+            </p>
+            <p class="q-ma-md"><b>示例</b></p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pywinauto_selftest()
+backend=pywinauto python=3.13.14
+visible windows: 11
+  - 程序管理器
+  - …</pre>
+
+            <div class="text-subtitle2 text-grey-8 q-mt-lg">内部辅助函数（一般无需直接调用）</div>
+            <p class="q-ma-md"><code>pywinauto_run (cfg)</code> 执行单个
+              action（<code>version</code>/<code>windows</code>/<code>start</code>/<code>connect</code>/<code>click</code>/<code>type_keys</code>/<code>close</code>/<code>texts</code>），通过临时
+              JSON 与 Python 驱动通信；<code>pywinauto_fwd (p)</code> 把 Windows
+              路径的反斜杠转正斜杠；<code>pywinauto_quote_python (py)</code> 为解释器命令按需加引号；<code>pywinauto_posix (p)</code> 把盘符路径转成
+              MSYS2 POSIX 路径。公开函数已封装这些细节，通常直接使用上面的 1～10 即可。</p>
+
+            <div id="qrc_example" class="title1 q-ma-md text-primary">QRC 解密示例（图文对照）</div>
+            <p class="q-ma-md"><a href="LyricTools.exe">LyricTools.exe</a> 产生的 <a
+                href="test.qrc"><code>test.qrc</code></a> 是一份本地加密歌词文件。经逆向与实测，完整链路如下：</p>
+            <p class="q-ma-md">11 字节 magic <code>98 25 b0 ac e3 02 83 68 e8 fc 6c</code>
+              → 256 字节 XOR 前置混淆（表位于 exe 偏移 0x2e33d0，索引 <code>(i²+22i+148)&amp;255</code>）
+              → 私有位序 3DES-ECB 解密（24 字节密钥 <code>!@#)(*$%123ZXC!@!@#)(NHL</code>）
+              → zlib inflate → UTF-8 XML。</p>
+            <p class="q-ma-md">样本文件：<code>test.qrc</code> 共 3603 字节，去掉 magic 后 body 为 3592 字节（8 字节对齐）；解密后 XML 为 7084
+              字节，以 <code>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;QrcInfos&gt;</code> 开头。</p>
+
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 1　双后端调用链</div><img src="screenshots/04_pipeline.png"
+                  style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+            <div id="gui_practice" class="title1 q-ma-md text-primary">GUI 自动化操作实战</div>
+            <p class="q-ma-md">这一节用真实截图走一遍「用 LyricTools.exe 解密 test.qrc」的完整 GUI 操作，并给出对应的 Octave 调用。以下截图都是在本机实际启动
+              <code>LyricTools.exe</code>（动感歌词转换与制作 ver2.0.1）逐步操作抓拍的，不是示意图。</p>
+
+            <div class="text-h6 text-primary q-mt-lg">步骤 1　启动主程序</div>
+            <p class="q-ma-md">程序主界面有三个按钮：歌词格式转换、动感歌词制作、查看加密歌词。解密要走第三个。Octave 侧用 <code>pywinauto_start</code> 启动，或直接带
+              qrc 参数启动。</p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; exe = 'E:/桌面/八度信商/octave_cn/LyricTools.exe';
+&gt;&gt; pid = pywinauto_start(exe);          % 启动主窗口</pre>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 2　LyricTools.exe 主界面（三个功能按钮）</div><img
+                  src="screenshots/05_gui_main.png" style="border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+            <div class="text-h6 text-primary q-mt-lg">步骤 2　进入「查看加密歌词」</div>
+            <p class="q-ma-md">点击「查看加密歌词」按钮，弹出标题为「歌词查看」的窗口，初始为空白文本区，带一个「文件(F)」菜单。用 <code>pywinauto_click</code>
+              按标题激活窗口并点击；点击坐标是窗口客户区相对坐标。</p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; pywinauto_click('动感歌词转换与制作', 161, 178);   % 查看加密歌词按钮
+&gt;&gt; w = pywinauto_windows();                            % 出现「歌词查看」窗口</pre>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 3　「歌词查看」窗口（初始空白）</div><img src="screenshots/06_gui_viewer_empty.png"
+                  style="border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+            <div class="text-h6 text-primary q-mt-lg">步骤 3　打开文件菜单</div>
+            <p class="q-ma-md">点「歌词查看」窗口左上角的「文件(F)」菜单，下拉只有一项「打开(O)」。这一步是纯 GUI 路径，用键盘 <code>Alt+F</code> 或坐标点击均可。</p>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 4　文件菜单展开，仅有「打开(O)」</div><img src="screenshots/07_gui_filemenu.png"
+                  style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+            <div class="text-h6 text-primary q-mt-lg">步骤 4　选择 test.qrc</div>
+            <p class="q-ma-md">点「打开(O)」弹出标准文件对话框，过滤器为 <code>*krc;*.qrc</code>。定位到 <code>octave_cn</code> 目录，在文件名框填
+              <code>test.qrc</code>，点「打开」。至此 GUI 侧完成了「读取加密文件」的动作——正是 Frida hook 里 <code>CreateFileW</code> /
+              <code>ReadFile</code> 捕捉到的那一步。</p>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 5　文件打开对话框（过滤器 *krc;*.qrc）</div><img
+                  src="screenshots/08_gui_filedialog.png" style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+            <div class="text-h6 text-primary q-mt-lg">步骤 5　得到解密明文，与 DES 结果交叉对照</div>
+            <p class="q-ma-md">程序自动完成 XOR + 3DES + zlib 解密，在文本区显示 XML 明文：开头
+              <code>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;QrcInfos&gt;</code>，含
+              <code>[ti:奥利给]</code>、<code>[ar:MC利哥]</code> 与时间轴歌词。状态栏显示文件路径。这就是 exe 自己解出的明文，可用来验证
+              <code>qrc_decrypt_file()</code> 的 3DES 结果逐字节一致。</p>
+            <pre class="q-ma-md" style="background:#f5f5f5;color:#333;border-radius:4px;padding:8px 12px;">&gt;&gt; [xml, info] = qrc_decrypt_file('test.qrc');
+&gt;&gt; strncmp(xml, '&lt;?xml version="1.0"', 19)
+ans = 1
+&gt;&gt; pywinauto_close('歌词查看');</pre>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 6　解密后的 XML 明文（exe 自己解出）</div><img
+                  src="screenshots/09_gui_plaintext.png" style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+            <p class="q-ma-md">说明：上面 5 张是真实桌面抓图，因此保留了程序原生的窗口外观（含菜单、状态栏）；而文档前几节的终端类截图是用 Octave 输出渲染的卡片图。两种都对应本机实跑结果。</p>
+
+            <div id="code" class="title1 q-ma-md text-primary">GUI 交叉验证示例</div>
+            <p class="q-ma-md">&gt;&gt; pkg load octave_pywinauto<br>
+              &gt;&gt; pywinauto_selftest()<br>
+              backend=pywinauto python=3.13.14<br>
+              visible windows: 11<br>
+              &gt;&gt; info = pywinauto_example_qrc('LyricTools.exe', 'test.qrc');</p>
+            <p class="q-ma-md">这一步得到 exe 自己解出的明文，用来和上一步 3DES 结果逐字节对照，确认 XOR 表与索引公式没有偏差。</p>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 7　pywinauto_selftest 输出</div><img src="screenshots/01_selftest.png"
+                  style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 8　两种后端对照</div><img src="screenshots/02_backends.png"
+                  style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+            <q-card class="q-my-md"><q-card-section>
+                <div class="text-h6 text-primary">图 9　QRC GUI 交叉验证</div><img src="screenshots/03_example_qrc.png"
+                  style="max-width:100%;border:1px solid #ddd;" />
+              </q-card-section></q-card>
+
+          </div>
+        </div>
+        <q-toolbar class="bg-grey-8 text-white q-my-md shadow-2">
+          <q-btn stretch flat label="版权所有 © 2024-2026 CNOCTAVE / Yu Hongbo"
+            @click="goTo('https://cnoctave.top')"></q-btn>
+          <q-separator dark vertical></q-separator>
+          <q-btn stretch flat label="CC BY-ND 4.0"
+            @click="goTo('https://creativecommons.org/licenses/by-nd/4.0/')"></q-btn>
+        </q-toolbar>
+      </q-page-container>
+    </q-layout>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.0/dist/quasar.umd.prod.js"></script>
+  <script>
+    const App = {
+      data() {
+        return {
+          leftDrawerOpen: true,
+          scrollToTop() { window.scrollTo(0, 0); },
+          goTo(t) { window.open(t, '_blank'); },
+          goToID(t) { window.open(t, '_self'); }
+        };
+      }
+    };
+    Vue.createApp(App).use(Quasar).mount('#q-app');
+  </script>
+</body>
+
+</html>

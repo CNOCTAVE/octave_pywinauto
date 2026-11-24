@@ -1,0 +1,26 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Build and Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  linux-build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: 'octave_pywinauto'
+      # uncomment this on demand
+      - run: sudo chmod a+x octave_pywinauto/src/configure
+      # uncomment this on demand
+      - run: sudo chmod -R a+x octave_pywinauto/inst
+      - run: tar --warning=no-file-changed --exclude='octave_pywinauto/.git' --exclude='octave_pywinauto/.github' -czvf octave_pywinauto.tar.gz octave_pywinauto
+      - run: gh release upload 1.0.0 octave_pywinauto.tar.gz --repo $GITHUB_REPOSITORY

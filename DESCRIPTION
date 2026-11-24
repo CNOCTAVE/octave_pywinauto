@@ -1,0 +1,13 @@
+Name: octave_pywinauto
+Version: 1.0.0
+Date: 2026-11-18
+Author: Yu Hongbo <yuhongbo@member.fsf.org>, CNOCTAVE <cnoctave@qq.com>
+Maintainer: Yu Hongbo <yuhongbo@member.fsf.org>, CNOCTAVE <cnoctave@qq.com>
+Title: Windows GUI automation for GNU Octave
+Description: Wraps pywinauto for GNU Octave on Windows.  The pure-Python
+ parts of pywinauto and comtypes are vendored as .pyc files compiled for the
+ Python versions used by Octave; a ctypes Win32 backend keeps the wrapper
+ usable with Octave's built-in CPython, which ships without pywin32.
+Depends: octave (>= 8.0.0)
+License: GPLv3+
+Url: https://github.com/CNOCTAVE/octave_pywinauto

@@ -1,0 +1,18 @@
+octave_pywinauto >> Windows GUI automation from GNU Octave
+Setup
+ pywinauto_init
+ pywinauto_version
+Windows
+ pywinauto_windows
+ pywinauto_start
+ pywinauto_connect
+ pywinauto_click
+ pywinauto_type_keys
+ pywinauto_close
+Examples and tests
+ pywinauto_example_qrc
+ pywinauto_selftest
+Internal helper
+ pywinauto_run
+ pywinauto_fwd
+ pywinauto_quote_python

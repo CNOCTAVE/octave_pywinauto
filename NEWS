@@ -1,0 +1,8 @@
+octave_pywinauto 1.0.0 (2026-11-18)
+====================================
+
+* Initial release, Windows only.
+* Vendored pywinauto 0.6.9 and comtypes 1.5.0 as sourceless .pyc bytecode for
+  CPython 3.12 (Octave built-in) and CPython 3.13 (ordinary Windows Python).
+* ctypes Win32 fallback for the built-in Python, which has no pywin32.
+* pywinauto_example_qrc() automates LyricTools.exe for QRC cross-checking.
